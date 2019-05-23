@@ -312,6 +312,7 @@ class Model	{
 		stringstream ss;
 		process->TraceHeader(ss);
 		os << ss.str();
+        cout << ss.str();
 	}
 
 	void Trace(ostream& os)	{
@@ -319,6 +320,7 @@ class Model	{
         ss.precision(10);
 		process->Trace(ss);
 		os << ss.str();
+		cout << ss.str(); // PRINT (iteration info)
 	}
 	
 	void TreeTrace(ostream& os)	{

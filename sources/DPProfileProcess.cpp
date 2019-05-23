@@ -24,7 +24,7 @@ along with PhyloBayes. If not, see <http://www.gnu.org/licenses/>.
 //-------------------------------------------------------------------------
 //-------------------------------------------------------------------------
 
-const double meandir[] = {0.499737,0.171262,0.183399,0.225593,0.197453,0.211819,0.173191,0.175454,0.3181,0.240008,0.187577,0.324778,0.205587,0.395097,0.162356,0.519427,0.526213,0.349177,0.0511527,0.130222};
+// const double meandir[] = {0.499737,0.171262,0.183399,0.225593,0.197453,0.211819,0.173191,0.175454,0.3181,0.240008,0.187577,0.324778,0.205587,0.395097,0.162356,0.519427,0.526213,0.349177,0.0511527,0.130222};
 
 void DPProfileProcess::SampleHyper()	{
 	kappa = 1;
@@ -74,7 +74,7 @@ void DPProfileProcess::SampleAlloc()	{
 		double total = 0;
 		double max = 0;
 		for (int k=0; k<Ncomponent; k++)	{
-			double tmp = log(occupancy[k]) * LogProxy(i,k);
+			double tmp = log((double)occupancy[k]) * LogProxy(i,k);
 			if ((!k) || (max < tmp))	{
 				max = tmp;
 			}
