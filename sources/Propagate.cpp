@@ -87,17 +87,24 @@ void MatrixSubstitutionProcess::Propagate(double*** from, double*** to, double t
 	const int nstate = GetMatrix(sitemin)->GetNstate();
 	// double* bigaux = new double[(sitemax - sitemin) * GetNrate(0) * nstate];
 	double* aux = new double[GetNsite() * GetNrate(0) * nstate];
+
+	// cout << "FOR LOOP 1: Site min " << sitemin << "Sitemax" << sitemax << endl;// DEBUG
+
 	for(i=sitemin; i<sitemax; i++)	{
 		SubMatrix* matrix = GetMatrix(i);
 		double** eigenvect = matrix->GetEigenVect();
 		double** inveigenvect = matrix->GetInvEigenVect();
 		double* eigenval = matrix->GetEigenVal();
+
+	 	// cout << "FOR LOOP 2: Nrate " << GetNrate(i) << endl;  // DEBUG
+
 		for(j=0; j<GetNrate(i); j++)	{
 			if ((!condalloc) || (ratealloc[i] == j))	{
 				double* up = from[i][j];
 				double* down = to[i][j];
 				//SubMatrix* matrix = GetMatrix(i);
 				length = time * GetRate(i,j);
+	 			// cout << "FOR LOOPS 3: Nrate " << nstate << endl;    // DEBUG
 
 				//double** eigenvect = matrix->GetEigenVect();
 				//double** inveigenvect= matrix->GetInvEigenVect();
