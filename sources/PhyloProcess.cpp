@@ -14,6 +14,7 @@ along with PhyloBayes. If not, see <http://www.gnu.org/licenses/>.
 **********************/
 
 
+#include "Parallel.h"
 #include "StringStreamUtils.h"
 
 #include "Random.h"
@@ -21,7 +22,6 @@ along with PhyloBayes. If not, see <http://www.gnu.org/licenses/>.
 #include <string>
 
 #include <cassert>
-#include "Parallel.h"
 
 #include "TexTab.h"
 

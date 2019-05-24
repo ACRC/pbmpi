@@ -13,6 +13,7 @@ along with PhyloBayes. If not, see <http://www.gnu.org/licenses/>.
 
 **********************/
 
+#include "Parallel.h"
 
 #include "CodonSequenceAlignment.h"
 
@@ -25,7 +26,6 @@ along with PhyloBayes. If not, see <http://www.gnu.org/licenses/>.
 #include "CodonMutSelFinitePhyloProcess.h"
 #include "CodonMutSelSBDPPhyloProcess.h"
 
-#include "Parallel.h"
 #include <iostream>
 #include <fstream>
 #include <limits>
