@@ -1,3 +1,21 @@
+cmd:icpc -I/mnt/storage/software/languages/intel/intel-parallel_studio_xe_2018_u3/compilers_and_libraries_2018.3.222/linux/mpi/intel64/include -g -L/cm/shared/languages/Intel-Compiler-XE-U2/compilers_and_libraries/linux/mpi/intel64/lib/ -DMPICH_IGNORE_CXX_SEEK -Wall -O3 -qopt-report=5 -qopt-report-phase=vec -c -o Bipartition.o
+dir:/mnt/storage/home/hw16471/summer19/phylobayes-mpi/sources
+fnm:Bipartition.cpp
+cmd:icpc -I/mnt/storage/software/languages/intel/intel-parallel_studio_xe_2018_u3/compilers_and_libraries_2018.3.222/linux/mpi/intel64/include -g -L/cm/shared/languages/Intel-Compiler-XE-U2/compilers_and_libraries/linux/mpi/intel64/lib/ -DMPICH_IGNORE_CXX_SEEK -Wall -O3 -qopt-report=5 -qopt-report-phase=vec -c -o Bipartition.o
+dir:/mnt/storage/home/hw16471/summer19/phylobayes-mpi/sources
+fnm:Bipartition.cpp
+cmd:icpc -I/mnt/storage/software/languages/intel/intel-parallel_studio_xe_2018_u3/compilers_and_libraries_2018.3.222/linux/mpi/intel64/include -g -L/cm/shared/languages/Intel-Compiler-XE-U2/compilers_and_libraries/linux/mpi/intel64/lib/ -DMPICH_IGNORE_CXX_SEEK -Wall -O3 -qopt-report=5 -qopt-report-phase=vec -c -o Bipartition.o
+dir:/mnt/storage/home/hw16471/summer19/phylobayes-mpi/sources
+fnm:Bipartition.cpp
+cmd:icpc -I/mnt/storage/software/languages/intel/intel-parallel_studio_xe_2018_u3/compilers_and_libraries_2018.3.222/linux/mpi/intel64/include -g -L/cm/shared/languages/Intel-Compiler-XE-U2/compilers_and_libraries/linux/mpi/intel64/lib/ -DMPICH_IGNORE_CXX_SEEK -Wall -O3 -qopt-report=5 -qopt-report-phase=vec -c -o Bipartition.o
+dir:/mnt/storage/home/hw16471/summer19/phylobayes-mpi/sources
+fnm:Bipartition.cpp
+cmd:icpc -I/mnt/storage/apps/intel/impi/2017.1.132/intel64/include -g -L/cm/shared/languages/Intel-Compiler-XE-U2/compilers_and_libraries/linux/mpi/intel64/lib/ -DMPICH_IGNORE_CXX_SEEK -Wall -O3 -qopt-report=5 -qopt-report-phase=vec -c -o Bipartition.o
+dir:/mnt/storage/home/hw16471/summer19/phylobayes-mpi/sources
+fnm:Bipartition.cpp
+cmd:icpc -I/mnt/storage/software/languages/intel/intel-parallel_studio_xe_2018_u3/compilers_and_libraries_2018.3.222/linux/mpi/intel64/include -g -L/cm/shared/languages/Intel-Compiler-XE-U2/compilers_and_libraries/linux/mpi/intel64/lib/ -DMPICH_IGNORE_CXX_SEEK -Wall -O3 -qopt-report=5 -qopt-report-phase=vec -c -o Bipartition.o
+dir:/mnt/storage/home/hw16471/summer19/phylobayes-mpi/sources
+fnm:Bipartition.cpp
 cmd:icpc -I/cm/shared/languages/Intel-Compiler-XE-16-U2/compilers_and_libraries_2016.2.181/linux/mpi/intel64/include -g -L/cm/shared/languages/Intel-Compiler-XE-U2/compilers_and_libraries/linux/mpi/intel64/lib/ -DMPICH_IGNORE_CXX_SEEK -Wall -O3 -qopt-report=5 -qopt-report-phase=vec -c -o Bipartition.o
 dir:/newhome/hw16471/summer19/phylobayes-mpi/sources
 fnm:Bipartition.cpp

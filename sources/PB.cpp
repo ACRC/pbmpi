@@ -15,6 +15,7 @@ along with PhyloBayes. If not, see <http://www.gnu.org/licenses/>.
 
 
 #include "Model.h"
+#include <ctime>
 
 int main(int argc, char* argv[])	{
 
@@ -23,6 +24,10 @@ int main(int argc, char* argv[])	{
 	MPI_Init(&argc,&argv);
 	MPI_Comm_rank(MPI_COMM_WORLD,&myid);
 	MPI_Comm_size(MPI_COMM_WORLD,&nprocs);
+
+	time_t start_time;
+
+	start_time = time(NULL);
 
 	if (! myid)	{
 		cerr << '\n';
@@ -599,10 +604,16 @@ int main(int argc, char* argv[])	{
 		model->Run(burnin);
 		MESSAGE signal = KILL;
 		MPI_Bcast(&signal,1,MPI_INT,0,MPI_COMM_WORLD);
+		time_t final_time;
+
+		final_time = time(NULL);
+		cout << "TIME TAKEN: " << final_time-start_time;
 	}
 	else {
 		// MPI slave
 		model->WaitLoop();
 	}
 	MPI_Finalize();
+
+
 }
