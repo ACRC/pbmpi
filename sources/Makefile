@@ -1,8 +1,8 @@
-#CC=mpic++
-CC=mpiicpc
-#CC=tau_cxx.sh
-#CPPFLAGS= -Wall -O3 -c 
-CPPFLAGS= -g -L/cm/shared/languages/Intel-Compiler-XE-U2/compilers_and_libraries/linux/mpi/intel64/lib/  -DMPICH_IGNORE_CXX_SEEK -Wall -O3 -xAVX2 -c -qopt-report=5 -qopt-report-phase=vec
+CC=mpic++
+#CC=mpiicpc
+eCC=eau_cxx.sh
+CPPFLAGS= -Wall -O3 -c -mavx2 -ftree-vectorize  
+#CPPFLAGS= -g -L/cm/shared/languages/Intel-Compiler-XE-U2/compilers_and_libraries/linux/mpi/intel64/lib/  -DMPICH_IGNORE_CXX_SEEK -Wall -O3 -xAVX2 -c -qopt-report=5 -qopt-report-phase=vec
 LDFLAGS= -O3
 SRCS=  TaxonSet.cpp Tree.cpp Random.cpp SequenceAlignment.cpp CodonSequenceAlignment.cpp \
 	StateSpace.cpp CodonStateSpace.cpp ZippedSequenceAlignment.cpp SubMatrix.cpp \
