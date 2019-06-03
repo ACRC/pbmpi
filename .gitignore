@@ -8,3 +8,6 @@ profile*
 /data/archive
 *.priv
 data/phyloslurm
+data/35_noEF2/benchmark_start_pos/
+data/gnu_build
+/data/intel_build

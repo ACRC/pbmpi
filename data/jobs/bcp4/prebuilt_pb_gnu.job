@@ -14,4 +14,6 @@ module purge
 #module load languages/intel/2017.01
 module load apps/phylobayes/mpi-1.8.gnu
 
-mpirun  -np 28  pb_mpi -d 35_noEF2/35_noEF2.phy -f -x 1 2 35_noEF2/35_noEF2.tree
+
+which pb_mpi
+mpirun  -np 28  pb_mpi 35_noEF2/35_noEF2.tree

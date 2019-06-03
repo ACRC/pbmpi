@@ -5,17 +5,18 @@
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=28
 #SBATCH --cpus-per-task=1
-#SBATCH --time=0:20:00
+#SBATCH --time=0:59:00
 #SBATCH --mem-per-cpu=1000M
 
 echo 'Slurm Job'
 module purge
-module load OpenMPI/2.0.2-GCC-6.3.0-2.27
-  
-
+#module load OpenMPI/2.0.2-GCC-6.3.0-2.27
+module load OpenMPI/3.0.0-GCC-7.2.0-2.29 
+module load languages/gcc/9.1.0
+module rm GCCcore/7.2.0  binutils/2.29-GCCcore-7.2.0  GCC/7.2.0-2.29  zlib/1.2.11-GCCcore-7.2.0 numactl/2.0.11-GCCcore-7.2.0  hwloc/1.11.8-GCCcore-7.2.0  
 #export I_MPI_PMI_LIBRARY=/usr/lib64/libpmi.so
 
 
 which mpirun
 which ./pb_mpi
-mpirun  -np 28 ./pb_mpi -d 35_noEF2/35_noEF2.phylip -cat -gtr -x 1 2 35_noEF2/35_noEF2.tree
+mpirun  -np 28 ./pb_mpi 35_noEF2/35_noEF2.tree

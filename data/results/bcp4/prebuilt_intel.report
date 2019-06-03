@@ -1,0 +1,16 @@
+Slurm Job
+/mnt/storage/apps/intel/impi/2017.1.132/bin64/mpirun
+/mnt/storage/software/apps/PhyloBayes-MPI-1.8-INTEL/pbmpi/data/pb_mpi
+
+read data from file : 35_noEF2/35_noEF2.phylip
+number of taxa  : 81
+number of sites : 7723
+number of states: 20
+run started
+
+35_noEF2/35_noEF2.tree: stopping after 2000 points.
+
+
+real	67m33.810s
+user	0m0.034s
+sys	0m0.022s

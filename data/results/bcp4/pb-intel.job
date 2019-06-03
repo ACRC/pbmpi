@@ -5,7 +5,7 @@
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=28
 #SBATCH --cpus-per-task=1
-#SBATCH --time=0:59:00
+#SBATCH --time=2:00:00
 #SBATCH --mem-per-cpu=1000M
 
 echo 'Slurm Job'
@@ -13,9 +13,12 @@ module purge
 
 module load languages/intel/2018-u3
 #module load intel/2017.01
-#PATH=/mnt/storage/home/hw16471/summer19/phylobayes-mpi/data/intel_build/:$PATH
+PATH=/mnt/storage/home/hw16471/summer19/phylobayes-mpi/data/intel_build/:$PATH
 #export I_MPI_PMI_LIBRARY=/usr/lib64/libpmi.so
 
 #mpirun  -np 28 ./pb_mpi -d 35_noEF2/35_noEF2.phy -f -x 1 2 35_noEF2/35_noEF2.tree
 #time mpirun  -np 28 pb_mpi -d 35_noEF2/35_noEF2.phylip -cat -gtr -x 1 2000 35_noEF2/35_noEF2.tree
-time mpirun  -np 28 ./pb_mpi 35_noEF2/35_noEF2.tree
+
+which pb_mpi
+
+time mpirun  -np 28 pb_mpi 35_noEF2/35_noEF2.tree
