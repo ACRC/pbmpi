@@ -132,7 +132,7 @@ void MatrixSubstitutionProcess::Propagate(double*** from, double*** to, double t
 				// P^{-1} . up  -> aux
 				//double* tmpaux = aux;
                 
-                for(k=0; k<nstate; k++)	{
+               			for(k=0; k<nstate; k++)	{
 					//(*tmpaux++) = 0;
 					aux[offset+k] = 0.0;
 				}
@@ -141,6 +141,7 @@ void MatrixSubstitutionProcess::Propagate(double*** from, double*** to, double t
 				for(k=0; k<nstate; k++)	{
 					//double* tmpinveigen = inveigenvect[i];
                     
+					#pragma omp simd
 					for(l=0; l<nstate; l++)	{
 						//(*tmpaux) += (*tmpinveigen++) * (*tmpup++);
 						aux[offset+k] += inveigenvect[k][l] * up[l];
@@ -168,8 +169,8 @@ void MatrixSubstitutionProcess::Propagate(double*** from, double*** to, double t
 					down[k] = 0.0;
 				}
 				//tmpdown -= nstate;
-                for(k=0; k<nstate; k++) {
-                    
+                		for(k=0; k<nstate; k++) {
+                    			#pragma omp simd
 					for(l=0; l<nstate; l++)	{
 						//(*tmpdown) += (*tmpeigen++) * (*tmpaux++);
 						down[k] += eigenvect[k][l] * aux[offset+l]; 

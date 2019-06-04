@@ -5,6 +5,7 @@
 profile*
 *.tree*
 *.optrpt
+*.lst
 /data/archive
 *.priv
 data/phyloslurm

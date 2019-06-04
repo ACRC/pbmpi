@@ -1,8 +1,10 @@
 #CC=mpic++
-CC=mpiicpc
+CC=CC
+#CC=mpiicpc
 #CC=tau_cxx.sh
 #CPPFLAGS= -Wall -O3 -c -march=native -mtune=native -fopt-info-vec-all -ffast-math -funsafe-math-optimizations    
-CPPFLAGS= -g -L/cm/shared/languages/Intel-Compiler-XE-U2/compilers_and_libraries/linux/mpi/intel64/lib/  -DMPICH_IGNORE_CXX_SEEK -Wall -O3 -xHost -c -qopt-report=5 -qopt-report-phase=vec
+#CPPFLAGS= -g -L/cm/shared/languages/Intel-Compiler-XE-U2/compilers_and_libraries/linux/mpi/intel64/lib/  -DMPICH_IGNORE_CXX_SEEK -Wall -O3 -xHost -c -qopt-report=5 -qopt-report-phase=vec
+CPPFLAGS= -g -h list=a -h vector3 
 LDFLAGS= -O3
 SRCS=  TaxonSet.cpp Tree.cpp Random.cpp SequenceAlignment.cpp CodonSequenceAlignment.cpp \
 	StateSpace.cpp CodonStateSpace.cpp ZippedSequenceAlignment.cpp SubMatrix.cpp \
@@ -49,7 +51,7 @@ all: $(PROGS)
 
 %.d: %.cpp
 	@echo "Generating dependencies for $<..."; \
-	 set -e; rm -f $@; $(CC) -MM $(CPPFLAGS) $< > $@.$$$$; \
+	 set -e; rm -f $@; $(CC) -M $(CPPFLAGS) $< > $@.$$$$; \
 	 sed 's,\($*\)\.o[ :]*,\1.o $@ : ,g' < $@.$$$$ > $@; rm -f $@.$$$$
 
 
