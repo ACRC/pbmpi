@@ -1,3 +1,138 @@
+cmd:icpc -I/sw/lang/intel-psxe-2019-u3/compilers_and_libraries_2019.3.199/linux/mpi/intel64/include -g -Wall -xCORE-AVX512 -O3 -qopt-report=5 -qopt-report-phase=vec -c -o Bipartition.o
+dir:/home/hw16471/summer19/phylobayes-mpi/sources
+fnm:Bipartition.cpp
+cmd:icpc -I/sw/lang/intel-psxe-2019-u3/compilers_and_libraries_2019.3.199/linux/mpi/intel64/include -g -Wall -xCORE-AVX512 -O3 -qopt-report=5 -qopt-report-phase=vec -c -o Bipartition.o
+dir:/home/hw16471/summer19/phylobayes-mpi/sources
+fnm:Bipartition.cpp
+cmd:icpc -I/sw/lang/intel-psxe-2019-u3/compilers_and_libraries_2019.3.199/linux/mpi/intel64/include -g -Wall -xCORE-AVX512 -O3 -qopt-report=5 -qopt-report-phase=vec -c -o Bipartition.o
+dir:/home/hw16471/summer19/phylobayes-mpi/sources
+fnm:Bipartition.cpp
+cmd:icpc -I/sw/lang/intel-psxe-2019-u3/compilers_and_libraries_2019.3.199/linux/mpi/intel64/include -g -Wall -xCORE-AVX512 -O3 -qopt-report=5 -qopt-report-phase=vec -c -o Bipartition.o
+dir:/home/hw16471/summer19/phylobayes-mpi/sources
+fnm:Bipartition.cpp
+cmd:icpc -I/sw/lang/intel-psxe-2019-u3/compilers_and_libraries_2019.3.199/linux/mpi/intel64/include -g -Wall -xCORE-AVX512 -O3 -qopt-report=5 -qopt-report-phase=vec -c -o Bipartition.o
+dir:/home/hw16471/summer19/phylobayes-mpi/sources
+fnm:Bipartition.cpp
+cmd:icpc -I/sw/lang/intel-psxe-2019-u3/compilers_and_libraries_2019.3.199/linux/mpi/intel64/include -g -Wall -xCORE-AVX512 -O3 -qopt-report=5 -qopt-report-phase=vec -c -o Bipartition.o
+dir:/home/hw16471/summer19/phylobayes-mpi/sources
+fnm:Bipartition.cpp
+cmd:icpc -I/sw/lang/intel-psxe-2019-u3/compilers_and_libraries_2019.3.199/linux/mpi/intel64/include -g -Wall -xCORE-AVX512 -qopt-zmm-usage=high -O3 -qopt-report=5 -qopt-report-phase=vec -c -o Bipartition.o
+dir:/home/hw16471/summer19/phylobayes-mpi/sources
+fnm:Bipartition.cpp
+cmd:icpc -I/sw/lang/intel-psxe-2019-u3/compilers_and_libraries_2019.3.199/linux/mpi/intel64/include -g -Wall -xCORE-AVX512 -qopt-zmm-usage=high -O3 -qopt-report=5 -qopt-report-phase=vec -c -o Bipartition.o
+dir:/home/hw16471/summer19/phylobayes-mpi/sources
+fnm:Bipartition.cpp
+cmd:icpc -I/sw/lang/intel-psxe-2019-u3/compilers_and_libraries_2019.3.199/linux/mpi/intel64/include -g -Wall -xCORE-AVX512 -qopt-zmm-usage=high -O3 -qopt-report=5 -qopt-report-phase=vec -c -o Bipartition.o
+dir:/home/hw16471/summer19/phylobayes-mpi/sources
+fnm:Bipartition.cpp
+cmd:icpc -I/sw/lang/intel-psxe-2019-u3/compilers_and_libraries_2019.3.199/linux/mpi/intel64/include -g -Wall -xCORE-AVX512 -O3 -qopt-report=5 -qopt-report-phase=vec -c -o Bipartition.o
+dir:/home/hw16471/summer19/phylobayes-mpi/sources
+fnm:Bipartition.cpp
+cmd:icpc -I/sw/lang/intel-psxe-2019-u3/compilers_and_libraries_2019.3.199/linux/mpi/intel64/include -g -Wall -xCORE-AVX512 -O3 -qopt-report=5 -qopt-report-phase=vec -c -o Bipartition.o
+dir:/home/hw16471/summer19/phylobayes-mpi/sources
+fnm:Bipartition.cpp
+cmd:icpc -I/sw/lang/intel-psxe-2019-u3/compilers_and_libraries_2019.3.199/linux/mpi/intel64/include -g -Wall -xAVX2 -O3 -qopt-report=5 -qopt-report-phase=vec -c -o Bipartition.o
+dir:/home/hw16471/summer19/phylobayes-mpi/sources
+fnm:Bipartition.cpp
+cmd:icpc -I/sw/lang/intel-psxe-2019-u3/compilers_and_libraries_2019.3.199/linux/mpi/intel64/include -g -Wall -xCOMMON-AVX512 -O3 -qopt-report=5 -qopt-report-phase=vec -c -o Bipartition.o
+dir:/home/hw16471/summer19/phylobayes-mpi/sources
+fnm:Bipartition.cpp
+cmd:icpc -I/sw/lang/intel-psxe-2019-u3/compilers_and_libraries_2019.3.199/linux/mpi/intel64/include -g -Wall -xHost -O3 -qopt-report=5 -qopt-report-phase=vec -c -o Bipartition.o
+dir:/home/hw16471/summer19/phylobayes-mpi/sources
+fnm:Bipartition.cpp
+cmd:icpc -I/sw/lang/intel-psxe-2019-u3/compilers_and_libraries_2019.3.199/linux/mpi/intel64/include -g -Wall -xCOMMON-AVX512 -O3 -qopt-report=5 -qopt-report-phase=vec -c -o Bipartition.o
+dir:/home/hw16471/summer19/phylobayes-mpi/sources
+fnm:Bipartition.cpp
+cmd:icpc -I/sw/lang/intel-psxe-2019-u3/compilers_and_libraries_2019.3.199/linux/mpi/intel64/include -g -Wall -xCOMMON-AVX512 -O3 -qopt-report=5 -qopt-report-phase=vec -c -o Bipartition.o
+dir:/home/hw16471/summer19/phylobayes-mpi/sources
+fnm:Bipartition.cpp
+cmd:icpc -I/sw/lang/intel-psxe-2019-u3/compilers_and_libraries_2019.3.199/linux/mpi/intel64/include -g -Wall -xCOMMON-AVX512 -O3 -qopt-report=5 -qopt-report-phase=vec -c -o Bipartition.o
+dir:/home/hw16471/summer19/phylobayes-mpi/sources
+fnm:Bipartition.cpp
+cmd:icpc -I/sw/lang/intel-psxe-2019-u3/compilers_and_libraries_2019.3.199/linux/mpi/intel64/include -g -Wall -xHost -O3 -qopt-report=5 -qopt-report-phase=vec -c -o Bipartition.o
+dir:/home/hw16471/summer19/phylobayes-mpi/sources
+fnm:Bipartition.cpp
+cmd:icpc -I/sw/lang/intel-psxe-2019-u3/compilers_and_libraries_2019.3.199/linux/mpi/intel64/include -g -Wall -xCOMMON-AVX512 -O3 -qopt-report=5 -qopt-report-phase=vec -c -o Bipartition.o
+dir:/home/hw16471/summer19/phylobayes-mpi/sources
+fnm:Bipartition.cpp
+cmd:icpc -I/sw/lang/intel-psxe-2019-u3/compilers_and_libraries_2019.3.199/linux/mpi/intel64/include -g -Wall -xAVX2 -O3 -qopt-report=5 -qopt-report-phase=vec -c -o Bipartition.o
+dir:/home/hw16471/summer19/phylobayes-mpi/sources
+fnm:Bipartition.cpp
+cmd:icpc -I/sw/lang/intel-psxe-2019-u3/compilers_and_libraries_2019.3.199/linux/mpi/intel64/include -g -Wall -xHost -O3 -qopt-report=5 -qopt-report-phase=vec -c -o Bipartition.o
+dir:/home/hw16471/summer19/phylobayes-mpi/sources
+fnm:Bipartition.cpp
+cmd:icpc -I/sw/lang/intel-psxe-2019-u3/compilers_and_libraries_2019.3.199/linux/mpi/intel64/include -g -Wall -xCOMMON-AVX512 -O3 -qopt-report=5 -qopt-report-phase=vec -c -o Bipartition.o
+dir:/home/hw16471/summer19/phylobayes-mpi/sources
+fnm:Bipartition.cpp
+cmd:icpc -I/sw/lang/intel-psxe-2019-u3/compilers_and_libraries_2019.3.199/linux/mpi/intel64/include -g -Wall -xCOMMON-AVX512 -O3 -qopt-report=5 -qopt-report-phase=vec -c -o Bipartition.o
+dir:/home/hw16471/summer19/phylobayes-mpi/sources
+fnm:Bipartition.cpp
+cmd:icpc -I/sw/lang/intel-psxe-2019-u3/compilers_and_libraries_2019.3.199/linux/mpi/intel64/include -g -Wall -xCOMMON-AVX512 -O3 -qopt-report=5 -qopt-report-phase=vec -c -o Bipartition.o
+dir:/home/hw16471/summer19/phylobayes-mpi/sources
+fnm:Bipartition.cpp
+cmd:icpc -I/sw/lang/intel-psxe-2019-u3/compilers_and_libraries_2019.3.199/linux/mpi/intel64/include -g -Wall -xCOMMON-AVX512 -O3 -qopt-report=5 -qopt-report-phase=vec -c -o Bipartition.o
+dir:/home/hw16471/summer19/phylobayes-mpi/sources
+fnm:Bipartition.cpp
+cmd:icpc -I/sw/lang/intel-psxe-2019-u3/compilers_and_libraries_2019.3.199/linux/mpi/intel64/include -g -Wall -xCOMMON-AVX512 -O3 -qopt-report=5 -qopt-report-phase=vec -c -o Bipartition.o
+dir:/home/hw16471/summer19/phylobayes-mpi/sources
+fnm:Bipartition.cpp
+cmd:icpc -I/sw/lang/intel-psxe-2019-u3/compilers_and_libraries_2019.3.199/linux/mpi/intel64/include -g -Wall -xCOMMON-AVX512 -O3 -qopt-report=5 -qopt-report-phase=vec -c -o Bipartition.o
+dir:/home/hw16471/summer19/phylobayes-mpi/sources
+fnm:Bipartition.cpp
+cmd:icpc -I/sw/lang/intel-psxe-2019-u3/compilers_and_libraries_2019.3.199/linux/mpi/intel64/include -g -Wall -xCOMMON-AVX512 -O3 -qopt-report=5 -qopt-report-phase=vec -c -o Bipartition.o
+dir:/home/hw16471/summer19/phylobayes-mpi/sources
+fnm:Bipartition.cpp
+cmd:icpc -I/sw/lang/intel-psxe-2019-u3/compilers_and_libraries_2019.3.199/linux/mpi/intel64/include -g -Wall -xCOMMON-AVX512 -O3 -qopt-report=5 -qopt-report-phase=vec -c -o Bipartition.o
+dir:/home/hw16471/summer19/phylobayes-mpi/sources
+fnm:Bipartition.cpp
+cmd:icpc -I/sw/lang/intel-psxe-2019-u3/compilers_and_libraries_2019.3.199/linux/mpi/intel64/include -g -Wall -xCOMMON-AVX512 -O3 -qopt-report=5 -qopt-report-phase=vec -c -o Bipartition.o
+dir:/home/hw16471/summer19/phylobayes-mpi/sources
+fnm:Bipartition.cpp
+cmd:icpc -I/sw/lang/intel-psxe-2019-u3/compilers_and_libraries_2019.3.199/linux/mpi/intel64/include -g -Wall -xCOMMON-AVX512 -O3 -qopt-report=5 -qopt-report-phase=vec -c -o Bipartition.o
+dir:/home/hw16471/summer19/phylobayes-mpi/sources
+fnm:Bipartition.cpp
+cmd:icpc -I/sw/lang/intel-psxe-2019-u3/compilers_and_libraries_2019.3.199/linux/mpi/intel64/include -g -Wall -xCOMMON-AVX512 -O3 -qopt-report=5 -qopt-report-phase=vec -c -o Bipartition.o
+dir:/home/hw16471/summer19/phylobayes-mpi/sources
+fnm:Bipartition.cpp
+cmd:icpc -I/sw/lang/intel-psxe-2019-u3/compilers_and_libraries_2019.3.199/linux/mpi/intel64/include -g -Wall -xHost -qopt-zmm-usage=high -O3 -qopt-report=5 -qopt-report-phase=vec -c -o Bipartition.o
+dir:/home/hw16471/summer19/phylobayes-mpi/sources
+fnm:Bipartition.cpp
+cmd:icpc -I/sw/lang/intel-psxe-2019-u3/compilers_and_libraries_2019.3.199/linux/mpi/intel64/include -g -Wall -xAVX2 -qopt-zmm-usage=high -O3 -qopt-report=5 -qopt-report-phase=vec -c -o Bipartition.o
+dir:/home/hw16471/summer19/phylobayes-mpi/sources
+fnm:Bipartition.cpp
+cmd:icpc -I/sw/lang/intel-psxe-2019-u3/compilers_and_libraries_2019.3.199/linux/mpi/intel64/include -g -Wall -xAVX2 -O3 -qopt-report=5 -qopt-report-phase=vec -c -o Bipartition.o
+dir:/home/hw16471/summer19/phylobayes-mpi/sources
+fnm:Bipartition.cpp
+cmd:icpc -I/sw/lang/intel-psxe-2019-u3/compilers_and_libraries_2019.3.199/linux/mpi/intel64/include -g -Wall -xHost -O3 -qopt-report=5 -qopt-report-phase=vec -c -o Bipartition.o
+dir:/home/hw16471/summer19/phylobayes-mpi/sources
+fnm:Bipartition.cpp
+cmd:icpc -I/sw/lang/intel-psxe-2019-u3/compilers_and_libraries_2019.3.199/linux/mpi/intel64/include -g -Wall -xMIC-AVX512 -O3 -qopt-report=5 -qopt-report-phase=vec -c -o Bipartition.o
+dir:/home/hw16471/summer19/phylobayes-mpi/sources
+fnm:Bipartition.cpp
+cmd:icpc -I/sw/lang/intel-psxe-2019-u3/compilers_and_libraries_2019.3.199/linux/mpi/intel64/include -g -Wall -xCORE-AVX2 -xMIC-AVX512 -O3 -qopt-report=5 -qopt-report-phase=vec -c -o Bipartition.o
+dir:/home/hw16471/summer19/phylobayes-mpi/sources
+fnm:Bipartition.cpp
+cmd:icpc -I/sw/lang/intel-psxe-2019-u3/compilers_and_libraries_2019.3.199/linux/mpi/intel64/include -g -Wall -xCORE-AVX2 -avx512f -avx512cd -xMIC-AVX512 -O3 -qopt-report=5 -qopt-report-phase=vec -c -o Bipartition.o
+dir:/home/hw16471/summer19/phylobayes-mpi/sources
+fnm:Bipartition.cpp
+cmd:icpc -I/sw/lang/intel-psxe-2019-u3/compilers_and_libraries_2019.3.199/linux/mpi/intel64/include -g -Wall -xCORE-AVX2 -avx512f -avx512cd -O3 -qopt-report=5 -qopt-report-phase=vec -c -o Bipartition.o
+dir:/home/hw16471/summer19/phylobayes-mpi/sources
+fnm:Bipartition.cpp
+cmd:icpc -I/sw/lang/intel-psxe-2019-u3/compilers_and_libraries_2019.3.199/linux/mpi/intel64/include -g -Wall -xCORE-AVX2 -O3 -qopt-report=5 -qopt-report-phase=vec -c -o Bipartition.o
+dir:/home/hw16471/summer19/phylobayes-mpi/sources
+fnm:Bipartition.cpp
+cmd:icpc -I/sw/lang/intel-psxe-2019-u3/compilers_and_libraries_2019.3.199/linux/mpi/intel64/include -g -Wall -xCORE-AVX2 -O3 -qopt-report=5 -qopt-report-phase=vec -c -o Bipartition.o
+dir:/home/hw16471/summer19/phylobayes-mpi/sources
+fnm:Bipartition.cpp
+cmd:icpc -I/sw/lang/intel-psxe-2019-u3/compilers_and_libraries_2019.3.199/linux/mpi/intel64/include -g -Wall -O3 -xAVX2 -qopt-report=5 -qopt-report-phase=vec -c -o Bipartition.o
+dir:/home/hw16471/summer19/phylobayes-mpi/sources
+fnm:Bipartition.cpp
+cmd:icpc -I/sw/lang/intel-psxe-2019-u3/compilers_and_libraries_2019.3.199/linux/mpi/intel64/include -g -Wall -O3 -xHost -qopt-report=5 -qopt-report-phase=vec -c -o Bipartition.o
+dir:/home/hw16471/summer19/phylobayes-mpi/sources
+fnm:Bipartition.cpp
+cmd:icpc -I/sw/lang/intel-psxe-2019-u3/compilers_and_libraries_2019.3.199/linux/mpi/intel64/include -g -Wall -O3 -xHost -qopt-report=5 -qopt-report-phase=vec -c -o Bipartition.o
+dir:/home/hw16471/summer19/phylobayes-mpi/sources
+fnm:Bipartition.cpp
 cmd:icpc -I/mnt/storage/software/languages/intel/intel-parallel_studio_xe_2018_u3/compilers_and_libraries_2018.3.222/linux/mpi/intel64/include -g -L/cm/shared/languages/Intel-Compiler-XE-U2/compilers_and_libraries/linux/mpi/intel64/lib/ -DMPICH_IGNORE_CXX_SEEK -Wall -O3 -xHost -qopt-report=5 -qopt-report-phase=vec -c -o Bipartition.o
 dir:/mnt/storage/home/hw16471/summer19/phylobayes-mpi/sources
 fnm:Bipartition.cpp

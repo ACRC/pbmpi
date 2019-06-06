@@ -232,15 +232,15 @@ void ExpoConjugateGTRPhyloProcess::GlobalUpdateRRSuffStat()	{
 	int ivector[workload];
 	double dvector[workload];
 	for(i=1; i<nprocs; ++i) {
-		MPI_Recv(ivector,workload,MPI_INT,i,TAG1,MPI_COMM_WORLD,&stat);
+		MPI_Recv(ivector,workload,MPI_INT,MPI_ANY_SOURCE,10,MPI_COMM_WORLD,&stat);
 		// MPI_Recv(ivector,workload,MPI_INT,MPI_ANY_SOURCE,TAG1,MPI_COMM_WORLD,&stat);
 		for(j=0; j<workload; ++j) {
 			rrsuffstatcount[j] += ivector[j];
 		}
 	}
-	MPI_Barrier(MPI_COMM_WORLD);
+	// MPI_Barrier(MPI_COMM_WORLD);
 	for(i=1; i<nprocs; ++i) {
-		MPI_Recv(dvector,workload,MPI_DOUBLE,i,TAG1,MPI_COMM_WORLD,&stat);
+		MPI_Recv(dvector,workload,MPI_DOUBLE,MPI_ANY_SOURCE,11,MPI_COMM_WORLD,&stat);
 		// MPI_Recv(dvector,workload,MPI_DOUBLE,MPI_ANY_SOURCE,TAG1,MPI_COMM_WORLD,&stat);
 		for(j=0; j<workload; ++j) {
 			rrsuffstatbeta[j] += dvector[j];
@@ -256,9 +256,9 @@ void ExpoConjugateGTRPhyloProcess::SlaveUpdateRRSuffStat()	{
 	UpdateRRSuffStat();
 	int workload = Nrr;
 
-	MPI_Send(rrsuffstatcount,workload,MPI_INT,0,TAG1,MPI_COMM_WORLD);
-	MPI_Barrier(MPI_COMM_WORLD);
-	MPI_Send(rrsuffstatbeta,workload,MPI_DOUBLE,0,TAG1,MPI_COMM_WORLD);
+	MPI_Send(rrsuffstatcount,workload,MPI_INT,0,10,MPI_COMM_WORLD);
+	// MPI_Barrier(MPI_COMM_WORLD);
+	MPI_Send(rrsuffstatbeta,workload,MPI_DOUBLE,0,11,MPI_COMM_WORLD);
 
 	MPI_Bcast(rrsuffstatcount,Nrr,MPI_INT,0,MPI_COMM_WORLD);
 	MPI_Bcast(rrsuffstatbeta,Nrr,MPI_DOUBLE,0,MPI_COMM_WORLD);

@@ -54,28 +54,28 @@ SubMatrix::SubMatrix(int inNstate, bool innormalise) : Nstate(inNstate), normali
 
 void SubMatrix::Create()	{
 
-	Q = new double*[Nstate];
+	Q = new double*[Nstate] __attribute__((aligned(512)));
 	for (int i=0; i<Nstate; i++)	{
-		Q[i] = new double[Nstate];
+		Q[i] = new double[Nstate] __attribute__((aligned(512)));
 	}
 
-	u = new double*[Nstate];
+	u = new double*[Nstate] __attribute__((aligned(512)));
 	for (int i=0; i<Nstate; i++)	{
-		u[i] = new double[Nstate];
+		u[i] = new double[Nstate] __attribute__((aligned(512)));
 	}
 
-	invu = new double*[Nstate];
+	invu = new double*[Nstate] __attribute__((aligned(512)));
 	for (int i=0; i<Nstate; i++)	{
-		invu[i] = new double[Nstate];
+		invu[i] = new double[Nstate] __attribute__((aligned(512)));
 	}
 
-	v = new double[Nstate];
-	vi = new double[Nstate];
+	v = new double[Nstate] __attribute__((aligned(512)));
+	vi = new double[Nstate] __attribute__((aligned(512)));
 
-	mStationary = new double[Nstate];
+	mStationary = new double[Nstate] __attribute__((aligned(512)));
 
 	UniMu = 1;
-	mPow = new double**[UniSubNmax];
+	mPow = new double**[UniSubNmax] __attribute__((aligned(512)));
 	for (int n=0; n<UniSubNmax; n++)	{
 		mPow[n] = 0;
 		/*

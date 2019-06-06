@@ -87,15 +87,15 @@ void MatrixSubstitutionProcess::Propagate(double*** from, double*** to, double t
 	double length,max,maxup;
 	const int nstate = GetMatrix(sitemin)->GetNstate();
 	// double* bigaux = new double[(sitemax - sitemin) * GetNrate(0) * nstate];
-	double* __restrict__ aux = new double[GetNsite() * GetNrate(0) * nstate];
+	double* __restrict__ aux = new double[GetNsite() * GetNrate(0) * nstate] __attribute__((aligned(512)));
 
 	// cout << "FOR LOOP 1: Site min " << sitemin << "Sitemax" << sitemax << endl;// DEBUG
 
 	for(i=sitemin; i<sitemax; i++)	{
 		SubMatrix* matrix = GetMatrix(i);
-		double * __restrict__ const* __restrict__ const eigenvect = matrix->GetEigenVect();
+		double * __restrict__ const* __restrict__ const eigenvect    = matrix->GetEigenVect();
 		double * __restrict__ const* __restrict__ const inveigenvect = matrix->GetInvEigenVect();
-		double * const __restrict__  eigenval = matrix->GetEigenVal();
+		double * const __restrict__  eigenval                        = matrix->GetEigenVal();
 
 	 	// cout << "FOR LOOP 2: Nrate " << GetNrate(i) << endl;  // DEBUG
 
@@ -131,8 +131,8 @@ void MatrixSubstitutionProcess::Propagate(double*** from, double*** to, double t
 				offset = nstate*(i*GetNrate(0) + j);
 				// P^{-1} . up  -> aux
 				//double* tmpaux = aux;
-                
-               			for(k=0; k<nstate; k++)	{
+                // #pragma vector aligned
+               	for(k=0; k<nstate; k++)	{
 					//(*tmpaux++) = 0;
 					aux[offset+k] = 0.0;
 				}
@@ -141,7 +141,7 @@ void MatrixSubstitutionProcess::Propagate(double*** from, double*** to, double t
 				for(k=0; k<nstate; k++)	{
 					//double* tmpinveigen = inveigenvect[i];
                     
-					#pragma omp simd
+					// #pragma vector aligned
 					for(l=0; l<nstate; l++)	{
 						//(*tmpaux) += (*tmpinveigen++) * (*tmpup++);
 						aux[offset+k] += inveigenvect[k][l] * up[l];
@@ -153,7 +153,7 @@ void MatrixSubstitutionProcess::Propagate(double*** from, double*** to, double t
 
 				// exp(length * L) . aux  -> aux
 				//double* tmpval = eigenval;
-                
+                // #pragma vector aligned
 				for(k=0; k<nstate; k++)	{
 					//(*tmpaux++) *= exp(length * (*tmpval++));
 					aux[offset+k] *= exp(length * eigenval[k]);
@@ -169,8 +169,8 @@ void MatrixSubstitutionProcess::Propagate(double*** from, double*** to, double t
 					down[k] = 0.0;
 				}
 				//tmpdown -= nstate;
-                		for(k=0; k<nstate; k++) {
-                    			#pragma omp simd
+                for(k=0; k<nstate; k++) {
+                    // #pragma vector aligned
 					for(l=0; l<nstate; l++)	{
 						//(*tmpdown) += (*tmpeigen++) * (*tmpaux++);
 						down[k] += eigenvect[k][l] * aux[offset+l]; 

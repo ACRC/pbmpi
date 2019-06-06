@@ -1,10 +1,11 @@
 #CC=mpic++
-CC=CC
-#CC=mpiicpc
+#CC=CC
+CC=mpiicpc
 #CC=tau_cxx.sh
 #CPPFLAGS= -Wall -O3 -c -march=native -mtune=native -fopt-info-vec-all -ffast-math -funsafe-math-optimizations    
 #CPPFLAGS= -g -L/cm/shared/languages/Intel-Compiler-XE-U2/compilers_and_libraries/linux/mpi/intel64/lib/  -DMPICH_IGNORE_CXX_SEEK -Wall -O3 -xHost -c -qopt-report=5 -qopt-report-phase=vec
-CPPFLAGS= -g -h list=a -h vector3 
+CPPFLAGS= -g -Wall -xCORE-AVX512 -O3  -c -qopt-report=5 -qopt-report-phase=vec
+#CPPFLAGS= -g -h list=a -h vector3 
 LDFLAGS= -O3
 SRCS=  TaxonSet.cpp Tree.cpp Random.cpp SequenceAlignment.cpp CodonSequenceAlignment.cpp \
 	StateSpace.cpp CodonStateSpace.cpp ZippedSequenceAlignment.cpp SubMatrix.cpp \
