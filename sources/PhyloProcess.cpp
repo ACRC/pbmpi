@@ -1171,8 +1171,23 @@ void PhyloProcess::GlobalSetRatePrior(int inrateprior)	{
 	assert(myid == 0);
 	rateprior = inrateprior;
 	MESSAGE signal = SETRATEPRIOR;
-	MPI_Bcast(&signal,1,MPI_INT,0,MPI_COMM_WORLD);
-	MPI_Bcast(&rateprior,1,MPI_INT,0,MPI_COMM_WORLD);
+	struct timeval tv1, tv2;
+	gettimeofday(&tv1, NULL);
+
+	MPI_Bcast(&signal, 1, MPI_INT, 0, MPI_COMM_WORLD);
+
+	gettimeofday(&tv2, NULL);
+	printf("GlobalSetRatePrior sig,%f,seconds\n",
+		   (double)(tv2.tv_usec - tv1.tv_usec) / 1000000 +
+			   (double)(tv2.tv_sec - tv1.tv_sec));
+
+	gettimeofday(&tv1, NULL);
+
+	MPI_Bcast(&rateprior, 1, MPI_INT, 0, MPI_COMM_WORLD);
+
+	printf("GlobalSetRatePrior rp,%f,seconds\n",
+		   (double)(tv2.tv_usec - tv1.tv_usec) / 1000000 +
+			   (double)(tv2.tv_sec - tv1.tv_sec));
 }
 
 void PhyloProcess::SlaveSetRatePrior()	{
@@ -1185,8 +1200,26 @@ void PhyloProcess::GlobalSetProfilePrior(int inprofileprior)	{
 	assert(myid == 0);
 	profileprior = inprofileprior;
 	MESSAGE signal = SETPROFILEPRIOR;
-	MPI_Bcast(&signal,1,MPI_INT,0,MPI_COMM_WORLD);
-	MPI_Bcast(&profileprior,1,MPI_INT,0,MPI_COMM_WORLD);
+	struct timeval tv1, tv2;
+	gettimeofday(&tv1, NULL);
+
+	MPI_Bcast(&signal, 1, MPI_INT, 0, MPI_COMM_WORLD);
+
+	printf("GlobalSetProfilePrior sig,%f,seconds\n",
+		   (double)(tv2.tv_usec - tv1.tv_usec) / 1000000 +
+			   (double)(tv2.tv_sec - tv1.tv_sec));
+
+	
+
+	gettimeofday(&tv1, NULL);
+
+	MPI_Bcast(&profileprior, 1, MPI_INT, 0, MPI_COMM_WORLD);
+	// Thing to time here
+
+	printf("GlobalSetProfilePrior pp,%f,seconds\n",
+		   (double)(tv2.tv_usec - tv1.tv_usec) / 1000000 +
+			   (double)(tv2.tv_sec - tv1.tv_sec));
+
 }
 
 void PhyloProcess::SlaveSetProfilePrior()	{
@@ -1199,8 +1232,25 @@ void PhyloProcess::GlobalSetRootPrior(int inrootprior)	{
 	assert(myid == 0);
 	rootprior = inrootprior;
 	MESSAGE signal = SETROOTPRIOR;
-	MPI_Bcast(&signal,1,MPI_INT,0,MPI_COMM_WORLD);
-	MPI_Bcast(&rootprior,1,MPI_INT,0,MPI_COMM_WORLD);
+
+	struct timeval tv1, tv2;
+	gettimeofday(&tv1, NULL);
+
+	MPI_Bcast(&signal, 1, MPI_INT, 0, MPI_COMM_WORLD);
+
+	printf("GlobalSetRootPrior sig,%f,seconds\n",
+		   (double)(tv2.tv_usec - tv1.tv_usec) / 1000000 +
+			   (double)(tv2.tv_sec - tv1.tv_sec));
+
+	
+
+	gettimeofday(&tv1, NULL);
+
+	MPI_Bcast(&rootprior, 1, MPI_INT, 0, MPI_COMM_WORLD);
+
+	printf("GlobalSetRootPrior rootprior,%f,seconds\n",
+		   (double)(tv2.tv_usec - tv1.tv_usec) / 1000000 +
+			   (double)(tv2.tv_sec - tv1.tv_sec));
 }
 
 void PhyloProcess::SlaveSetRootPrior()	{
@@ -1285,7 +1335,16 @@ void PhyloProcess::GlobalSimulateForward()	{
 	// MPI
 	assert(myid == 0);
 	MESSAGE signal = SIMULATE;
-	MPI_Bcast(&signal,1,MPI_INT,0,MPI_COMM_WORLD);
+
+	struct timeval tv1, tv2;
+	gettimeofday(&tv1, NULL);
+
+	MPI_Bcast(&signal, 1, MPI_INT, 0, MPI_COMM_WORLD);
+	// Thing to time here
+
+	printf("GlobalSimulateForward,%f,seconds\n",
+		   (double)(tv2.tv_usec - tv1.tv_usec) / 1000000 +
+			   (double)(tv2.tv_sec - tv1.tv_sec));
 }
 
 
@@ -1296,7 +1355,15 @@ void PhyloProcess::GlobalUnfold()	{
 	GlobalUpdateParameters();
 
 	MESSAGE signal = UNFOLD;
+	struct timeval tv1, tv2;
+	gettimeofday(&tv1, NULL);
 	MPI_Bcast(&signal,1,MPI_INT,0,MPI_COMM_WORLD);
+	gettimeofday(&tv2, NULL);
+
+	gettimeofday(&tv2, NULL);
+	printf("global_unfold,%f,seconds\n",
+		    (double)(tv2.tv_usec - tv1.tv_usec) / 1000000 +
+			(double)(tv2.tv_sec - tv1.tv_sec));
 
 	GlobalUpdateConditionalLikelihoods();
 }
@@ -1309,7 +1376,16 @@ void PhyloProcess::GlobalCollapse()	{
 	// conflag = false;
 	assert(myid == 0);
 	MESSAGE signal = COLLAPSE;
+
+	struct timeval tv1, tv2;
+	gettimeofday(&tv1, NULL);
 	MPI_Bcast(&signal,1,MPI_INT,0,MPI_COMM_WORLD);
+	gettimeofday(&tv2, NULL);
+
+	gettimeofday(&tv2, NULL);
+	printf("global_collapse,%f,seconds\n",
+		    (double)(tv2.tv_usec - tv1.tv_usec) / 1000000 +
+			(double)(tv2.tv_sec - tv1.tv_sec));
 
 	CreateSuffStat();
 }
@@ -1323,9 +1399,28 @@ double PhyloProcess::GlobalComputeNodeLikelihood(const Link* from, int auxindex)
 	assert(myid == 0);
 	MESSAGE signal = LIKELIHOOD;
 	MPI_Status stat;
-	MPI_Bcast(&signal,1,MPI_INT,0,MPI_COMM_WORLD);
+	struct timeval tv1, tv2;
+	gettimeofday(&tv1, NULL);
+
+	MPI_Bcast(&signal, 1, MPI_INT, 0, MPI_COMM_WORLD);
+
+	gettimeofday(&tv2, NULL);
+	printf("GlobalComputeNodeLikelihood sig,%f,seconds\n",
+		   (double)(tv2.tv_usec - tv1.tv_usec) / 1000000 +
+			   (double)(tv2.tv_sec - tv1.tv_sec));
+
 	int i,args[] = {GetLinkIndex(from),auxindex};
-	MPI_Bcast(args,2,MPI_INT,0,MPI_COMM_WORLD);
+
+	gettimeofday(&tv1, NULL);
+
+	MPI_Bcast(args, 2, MPI_INT, 0, MPI_COMM_WORLD);
+	// Thing to time here
+
+	gettimeofday(&tv2, NULL);
+	printf("GlobalComputeNodeLikelihood args,%f,seconds\n",
+		   (double)(tv2.tv_usec - tv1.tv_usec) / 1000000 +
+			   (double)(tv2.tv_sec - tv1.tv_sec));
+
 	// master : sums up all values sent by slaves
 	// store this sum into member variable logL
 	// and return it
@@ -1348,10 +1443,31 @@ void PhyloProcess::GlobalReset(const Link* link, bool condalloc)	{
 	assert(myid == 0);
 	MESSAGE signal = RESET;
 	int args[2];
-	MPI_Bcast(&signal,1,MPI_INT,0,MPI_COMM_WORLD);
+
+	struct timeval tv1, tv2;
+	gettimeofday(&tv1, NULL);
+
+	MPI_Bcast(&signal, 1, MPI_INT, 0, MPI_COMM_WORLD);
+
+	gettimeofday(&tv2, NULL);
+	printf("GlobalReset sig,%f,seconds\n",
+		   (double)(tv2.tv_usec - tv1.tv_usec) / 1000000 +
+			   (double)(tv2.tv_sec - tv1.tv_sec));
+
+	
 	args[0] = GetLinkIndex(link);
 	args[1] = (condalloc) ? 1 : 0;
-	MPI_Bcast(args,2,MPI_INT,0,MPI_COMM_WORLD);
+
+	gettimeofday(&tv1, NULL);
+
+	MPI_Bcast(args, 2, MPI_INT, 0, MPI_COMM_WORLD);
+	// Thing to time here
+
+	gettimeofday(&tv2, NULL);
+	printf("GlobalReset args,%f,seconds\n",
+		   (double)(tv2.tv_usec - tv1.tv_usec) / 1000000 +
+			   (double)(tv2.tv_sec - tv1.tv_sec));
+
 }
 
 
@@ -1364,11 +1480,30 @@ void PhyloProcess::GlobalMultiply(const Link* from, const Link* to, bool condall
 	assert(myid == 0);
 	MESSAGE signal = MULTIPLY;
 	int args[3];
-	MPI_Bcast(&signal,1,MPI_INT,0,MPI_COMM_WORLD);
+
+	struct timeval tv1, tv2;
+	gettimeofday(&tv1, NULL);
+
+	MPI_Bcast(&signal, 1, MPI_INT, 0, MPI_COMM_WORLD);
+
+	gettimeofday(&tv2, NULL);
+	printf("GlobalMultiply sig,%f,seconds\n",
+      (double)(tv2.tv_usec - tv1.tv_usec) / 1000000 +
+      (double)(tv2.tv_sec - tv1.tv_sec));
+
+
 	args[0] = GetLinkIndex(from);
 	args[1] = GetLinkIndex(to);
 	args[2] = (condalloc) ? 1 : 0;
-	MPI_Bcast(args,3,MPI_INT,0,MPI_COMM_WORLD);
+
+	gettimeofday(&tv1, NULL);
+
+	MPI_Bcast(args, 3, MPI_INT, 0, MPI_COMM_WORLD);
+
+	gettimeofday(&tv2, NULL);
+	printf("GlobalMultiply args,%f,seconds\n",
+		   (double)(tv2.tv_usec - tv1.tv_usec) / 1000000 +
+			   (double)(tv2.tv_sec - tv1.tv_sec));
 }
 
 void PhyloProcess::GlobalMultiplyByStationaries(const Link* from, bool condalloc)	{
@@ -1377,10 +1512,28 @@ void PhyloProcess::GlobalMultiplyByStationaries(const Link* from, bool condalloc
 	assert(myid == 0);
 	MESSAGE signal = SMULTIPLY;
 	int args[2];
-	MPI_Bcast(&signal,1,MPI_INT,0,MPI_COMM_WORLD);
+	struct timeval tv1, tv2;
+	gettimeofday(&tv1, NULL);
+
+	MPI_Bcast(&signal, 1, MPI_INT, 0, MPI_COMM_WORLD);
+
+	gettimeofday(&tv2, NULL);
+	printf("GlobalMultiplyByStationaries sig,%f,seconds\n",
+		   (double)(tv2.tv_usec - tv1.tv_usec) / 1000000 +
+			   (double)(tv2.tv_sec - tv1.tv_sec));
+
+	
 	args[0] = GetLinkIndex(from);
 	args[1] = (condalloc) ? 1 : 0;
-	MPI_Bcast(args,2,MPI_INT,0,MPI_COMM_WORLD);
+	gettimeofday(&tv1, NULL);
+
+	MPI_Bcast(args, 2, MPI_INT, 0, MPI_COMM_WORLD);
+	// Thing to time here
+
+	gettimeofday(&tv2, NULL);
+	printf("GlobalMultiplyByStationaries args,%f,seconds\n",
+		   (double)(tv2.tv_usec - tv1.tv_usec) / 1000000 +
+			   (double)(tv2.tv_sec - tv1.tv_sec));
 }
 
 void PhyloProcess::GlobalInitialize(const Link* from, const Link* link, bool condalloc)	{
@@ -1389,11 +1542,33 @@ void PhyloProcess::GlobalInitialize(const Link* from, const Link* link, bool con
 	assert(myid == 0);
 	MESSAGE signal = INITIALIZE;
 	int args[3];
-	MPI_Bcast(&signal,1,MPI_INT,0,MPI_COMM_WORLD);
+
+	struct timeval tv1, tv2;
+	gettimeofday(&tv1, NULL);
+
+	MPI_Bcast(&signal, 1, MPI_INT, 0, MPI_COMM_WORLD);
+	// Thing to time here
+
+	gettimeofday(&tv2, NULL);
+	printf("GlobalInitialize sig,%f,seconds\n",
+		   (double)(tv2.tv_usec - tv1.tv_usec) / 1000000 +
+			   (double)(tv2.tv_sec - tv1.tv_sec));
+
 	args[0] = GetLinkIndex(from);
 	args[1] = GetLinkIndex(link);
 	args[2] = (condalloc) ? 1 : 0;
-	MPI_Bcast(args,3,MPI_INT,0,MPI_COMM_WORLD);
+
+	
+	gettimeofday(&tv1, NULL);
+
+	MPI_Bcast(args, 3, MPI_INT, 0, MPI_COMM_WORLD);
+	// Thing to time here
+
+	gettimeofday(&tv2, NULL);
+	printf("GlobalInitialize args,%f,seconds\n",
+		   (double)(tv2.tv_usec - tv1.tv_usec) / 1000000 +
+			   (double)(tv2.tv_sec - tv1.tv_sec));
+
 }
 
 
@@ -1402,13 +1577,40 @@ void PhyloProcess::GlobalPropagate(const Link* from, const Link* to, double time
 	// MPI
 	assert(myid == 0);
 	MESSAGE signal = PROPAGATE;
-	MPI_Bcast(&signal,1,MPI_INT,0,MPI_COMM_WORLD);
+
+	struct timeval tv1, tv2;
+	gettimeofday(&tv1, NULL);
+
+	MPI_Bcast(&signal, 1, MPI_INT, 0, MPI_COMM_WORLD);
+
+	gettimeofday(&tv2, NULL);
+	printf("GlobalPropagate sig,%f,seconds\n",
+		   (double)(tv2.tv_usec - tv1.tv_usec) / 1000000 +
+			   (double)(tv2.tv_sec - tv1.tv_sec));
+
     int args[3];
 	args[0] = GetLinkIndex(from);
 	args[1] = GetLinkIndex(to);
 	args[2] = (condalloc) ? 1 : 0;
-	MPI_Bcast(args,3,MPI_INT,0,MPI_COMM_WORLD);
-	MPI_Bcast(&time,1,MPI_DOUBLE,0,MPI_COMM_WORLD);
+	gettimeofday(&tv1, NULL);
+
+	MPI_Bcast(args, 3, MPI_INT, 0, MPI_COMM_WORLD);
+
+	gettimeofday(&tv2, NULL);
+	printf("GlobalPropagate args,%f,seconds\n",
+		   (double)(tv2.tv_usec - tv1.tv_usec) / 1000000 +
+			   (double)(tv2.tv_sec - tv1.tv_sec));
+
+	gettimeofday(&tv1, NULL);
+
+	// Thing to time here
+	MPI_Bcast(&time, 1, MPI_DOUBLE, 0, MPI_COMM_WORLD);
+
+	gettimeofday(&tv2, NULL);
+	printf("GlobalPropagate time,%f,seconds\n",
+		   (double)(tv2.tv_usec - tv1.tv_usec) / 1000000 +
+			   (double)(tv2.tv_sec - tv1.tv_sec));
+
 }
 
 double PhyloProcess::GlobalProposeMove(const Branch* branch, double tuning)	{
@@ -1446,7 +1648,15 @@ void PhyloProcess::GlobalUpdateConditionalLikelihoods()	{
 	// just send Updateconlikelihood message to all slaves
 	assert(myid == 0);
 	MESSAGE signal = UPDATE;
-	MPI_Bcast(&signal,1,MPI_INT,0,MPI_COMM_WORLD);
+	struct timeval tv1, tv2;
+	gettimeofday(&tv1, NULL);
+
+	MPI_Bcast(&signal, 1, MPI_INT, 0, MPI_COMM_WORLD);
+
+	gettimeofday(&tv2, NULL);
+	printf("GlobalUpdateConditionalLikelihoods,%f,seconds\n",
+		   (double)(tv2.tv_usec - tv1.tv_usec) / 1000000 +
+			   (double)(tv2.tv_sec - tv1.tv_sec));
 
 	GlobalComputeNodeLikelihood(GetRoot(),0);
 	// GlobalCheckLikelihood();
@@ -1460,10 +1670,30 @@ Link* PhyloProcess::GlobalDetach(Link* down, Link* up)	{
 	// but message passing will again  use link to index, then index to link, translations.
 	assert(myid == 0);
 	MESSAGE signal = DETACH;
-	MPI_Bcast(&signal,1,MPI_INT,0,MPI_COMM_WORLD);
+
+	struct timeval tv1, tv2;
+	gettimeofday(&tv1, NULL);
+
+	MPI_Bcast(&signal, 1, MPI_INT, 0, MPI_COMM_WORLD);
+
+	gettimeofday(&tv2, NULL);
+	printf("GlobalDetach sig,%f,seconds\n",
+		   (double)(tv2.tv_usec - tv1.tv_usec) / 1000000 +
+			   (double)(tv2.tv_sec - tv1.tv_sec));
+
 	int args[] = {GetLinkIndex(down),GetLinkIndex(up)};
 	// int args[] = {down->GetIndex(),up->GetIndex(),fromdown->GetIndex(),fromup->GetIndex()};
-	MPI_Bcast(args,2,MPI_INT,0,MPI_COMM_WORLD);
+
+	gettimeofday(&tv1, NULL);
+
+	MPI_Bcast(args, 2, MPI_INT, 0, MPI_COMM_WORLD);
+	// Thing to time here
+
+	gettimeofday(&tv2, NULL);
+	printf("GlobalDetach args,%f,seconds\n",
+		   (double)(tv2.tv_usec - tv1.tv_usec) / 1000000 +
+			   (double)(tv2.tv_sec - tv1.tv_sec));
+
 	return GetTree()->Detach(down,up);
 }
 
@@ -1473,10 +1703,31 @@ void PhyloProcess::GlobalAttach(Link* down, Link* up, Link* fromdown, Link* from
 	// same thing as for detach
 	assert(myid == 0);
 	MESSAGE signal = ATTACH;
-	MPI_Bcast(&signal,1,MPI_INT,0,MPI_COMM_WORLD);
+
+	struct timeval tv1, tv2;
+	gettimeofday(&tv1, NULL);
+	MPI_Bcast(&signal, 1, MPI_INT, 0, MPI_COMM_WORLD);
+
+	gettimeofday(&tv2, NULL);
+	printf("GlobalAttach sig,%f,seconds\n",
+		   (double)(tv2.tv_usec - tv1.tv_usec) / 1000000 +
+			   (double)(tv2.tv_sec - tv1.tv_sec));
+
+
+
 	int args[] = {GetLinkIndex(down),GetLinkIndex(up),GetLinkIndex(fromdown),GetLinkIndex(fromup)};
 	// int args[] = {down->GetIndex(),up->GetIndex(),fromdown->GetIndex(),fromup->GetIndex()};
-	MPI_Bcast(args,4,MPI_INT,0,MPI_COMM_WORLD);
+
+	gettimeofday(&tv1, NULL);
+
+	MPI_Bcast(args, 4, MPI_INT, 0, MPI_COMM_WORLD);
+	// Thing to time here
+
+	gettimeofday(&tv2, NULL);
+	printf("GlobalAttach args,%f,seconds\n",
+		   (double)(tv2.tv_usec - tv1.tv_usec) / 1000000 +
+			   (double)(tv2.tv_sec - tv1.tv_sec));
+
 	GetTree()->Attach(down,up,fromdown,fromup);
 }
 
@@ -1494,8 +1745,29 @@ void PhyloProcess::GlobalRootAtRandom()	{
 	// MPI
 	// call slaves, send a reroot message with argument newroot
 	MESSAGE signal = ROOT;
-	MPI_Bcast(&signal,1,MPI_INT,0,MPI_COMM_WORLD);
-	MPI_Bcast(&choose,1,MPI_INT,0,MPI_COMM_WORLD);
+
+	struct timeval tv1, tv2;
+	gettimeofday(&tv1, NULL);
+
+	MPI_Bcast(&signal, 1, MPI_INT, 0, MPI_COMM_WORLD);
+	// Thing to time here
+
+	gettimeofday(&tv2, NULL);
+	printf("GlobalRootAtRandom sig,%f,seconds\n",
+		   (double)(tv2.tv_usec - tv1.tv_usec) / 1000000 +
+			   (double)(tv2.tv_sec - tv1.tv_sec));
+
+
+	gettimeofday(&tv1, NULL);
+
+	MPI_Bcast(&choose, 1, MPI_INT, 0, MPI_COMM_WORLD);
+	// Thing to time here
+
+	gettimeofday(&tv2, NULL);
+	printf("GlobalRootAtRandom choose,%f,seconds\n",
+		   (double)(tv2.tv_usec - tv1.tv_usec) / 1000000 +
+			   (double)(tv2.tv_sec - tv1.tv_sec));
+
 
 	Link* tmp = 0;
 	Link* newroot = GetTree()->ChooseInternalNode(GetRoot(),tmp,choose);
@@ -1518,8 +1790,29 @@ void PhyloProcess::GlobalGibbsSPRScan(Link* down, Link* up, double* loglarray)  
 	args[1] = GetLinkIndex(up);
 
 	// MPI3 : send message : GibbsSPRScan(idown,iup);
-	MPI_Bcast(&signal,1,MPI_INT,0,MPI_COMM_WORLD);
-	MPI_Bcast(args,2,MPI_INT,0,MPI_COMM_WORLD);
+
+	struct timeval tv1, tv2;
+	gettimeofday(&tv1, NULL);
+
+	MPI_Bcast(&signal, 1, MPI_INT, 0, MPI_COMM_WORLD);
+	// Thing to time here
+
+	gettimeofday(&tv2, NULL);
+	printf("GlobalGibbsSPRScan sig,%f,seconds\n",
+		   (double)(tv2.tv_usec - tv1.tv_usec) / 1000000 +
+			   (double)(tv2.tv_sec - tv1.tv_sec));
+
+
+	gettimeofday(&tv1, NULL);
+
+	MPI_Bcast(args, 2, MPI_INT, 0, MPI_COMM_WORLD);
+	// Thing to time here
+
+	gettimeofday(&tv2, NULL);
+	printf("GlobalGibbsSPRScan args,%f,seconds\n",
+		   (double)(tv2.tv_usec - tv1.tv_usec) / 1000000 +
+			   (double)(tv2.tv_sec - tv1.tv_sec));
+
 
 	//
 	// gather all slaves'arrays
@@ -1832,7 +2125,17 @@ void PhyloProcess::GlobalUpdateBranchLengthSuffStat()	{
 	MPI_Status stat;
 	MESSAGE signal = UPDATE_BLENGTH;
 
-	MPI_Bcast(&signal,1,MPI_INT,0,MPI_COMM_WORLD);
+	struct timeval tv1, tv2;
+	gettimeofday(&tv1, NULL);
+
+	// Thing to time here
+	MPI_Bcast(&signal, 1, MPI_INT, 0, MPI_COMM_WORLD);
+
+	gettimeofday(&tv2, NULL);
+	printf("GlobalUpdateBranchLengthSuffStat sig,%f,seconds\n",
+		   (double)(tv2.tv_usec - tv1.tv_usec) / 1000000 +
+			   (double)(tv2.tv_sec - tv1.tv_sec));
+
 
 	for(i=0; i<nbranch; ++i) {
 		branchlengthsuffstatcount[i] = 0;
@@ -1892,7 +2195,17 @@ void PhyloProcess::GlobalUpdateSiteRateSuffStat()	{
 
 	MPI_Status stat;
 	MESSAGE signal = UPDATE_SRATE;
-	MPI_Bcast(&signal,1,MPI_INT,0,MPI_COMM_WORLD);
+
+	struct timeval tv1, tv2;
+	gettimeofday(&tv1, NULL);
+
+	MPI_Bcast(&signal, 1, MPI_INT, 0, MPI_COMM_WORLD);
+	// Thing to time here
+
+	gettimeofday(&tv2, NULL);
+	printf("GlobalUpdateSiteRateSuffStat,%f,seconds\n",
+		   (double)(tv2.tv_usec - tv1.tv_usec) / 1000000 +
+			   (double)(tv2.tv_sec - tv1.tv_sec));
 }
 
 void PhyloProcess::SlaveUpdateSiteRateSuffStat()	{
@@ -1917,7 +2230,16 @@ void PhyloProcess::GlobalGetMeanSiteRate()	{
 	MPI_Status stat;
 	MESSAGE signal = SITERATE;
 
-	MPI_Bcast(&signal,1,MPI_INT,0,MPI_COMM_WORLD);
+	struct timeval tv1, tv2;
+	gettimeofday(&tv1, NULL);
+
+	MPI_Bcast(&signal, 1, MPI_INT, 0, MPI_COMM_WORLD);
+	// Thing to time here
+
+	gettimeofday(&tv2, NULL);
+	printf("GlobalGetMeanSiteRate,%f,seconds\n",
+		   (double)(tv2.tv_usec - tv1.tv_usec) / 1000000 +
+			   (double)(tv2.tv_sec - tv1.tv_sec));
 
 	width = GetNsite()/(nprocs-1);
 	for(i=0; i<nprocs-1; ++i) {
@@ -1947,8 +2269,27 @@ void PhyloProcess::GlobalBroadcastTree()	{
 	for (unsigned int i=0; i<len; i++)	{
 		bvector[i] = s[i];
 	}
-	MPI_Bcast(&len,1,MPI_INT,0,MPI_COMM_WORLD);
-	MPI_Bcast(bvector,len,MPI_UNSIGNED_CHAR,0,MPI_COMM_WORLD);
+	struct timeval tv1, tv2;
+	gettimeofday(&tv1, NULL);
+
+	MPI_Bcast(&len, 1, MPI_INT, 0, MPI_COMM_WORLD);
+	// Thing to time here
+
+	gettimeofday(&tv2, NULL);
+	printf("GlobalBroadcastTree len,%f,seconds\n",
+		   (double)(tv2.tv_usec - tv1.tv_usec) / 1000000 +
+			   (double)(tv2.tv_sec - tv1.tv_sec));
+
+	gettimeofday(&tv1, NULL);
+
+	MPI_Bcast(bvector, len, MPI_UNSIGNED_CHAR, 0, MPI_COMM_WORLD);
+	// Thing to time here
+
+	gettimeofday(&tv2, NULL);
+	printf("GlobalBroadcastTree bvector,%f,seconds\n",
+		   (double)(tv2.tv_usec - tv1.tv_usec) / 1000000 +
+			   (double)(tv2.tv_sec - tv1.tv_sec));
+
 	delete[] bvector;
 
 }
@@ -2143,7 +2484,18 @@ void PhyloProcess::AllPostPred(string name, int burnin, int every, int until, in
 		i++;
 
 		MESSAGE signal = BCAST_TREE;
-		MPI_Bcast(&signal,1,MPI_INT,0,MPI_COMM_WORLD);
+
+		struct timeval tv1, tv2;
+		gettimeofday(&tv1, NULL);
+
+		MPI_Bcast(&signal, 1, MPI_INT, 0, MPI_COMM_WORLD);
+		// Thing to time here
+
+		gettimeofday(&tv2, NULL);
+		printf("AllPostPred,%f,seconds\n",
+			   (double)(tv2.tv_usec - tv1.tv_usec) / 1000000 +
+				   (double)(tv2.tv_sec - tv1.tv_sec));
+
 		GlobalBroadcastTree();
 		GlobalUpdateConditionalLikelihoods();
 		GlobalUnclamp();

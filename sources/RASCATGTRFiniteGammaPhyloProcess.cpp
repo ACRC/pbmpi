@@ -56,7 +56,14 @@ void RASCATGTRFiniteGammaPhyloProcess::GlobalUpdateParameters()	{
 	int ivector[ni];
 	double dvector[nd]; 
 	MESSAGE signal = PARAMETER_DIFFUSION;
+
+	struct timeval tv1, tv2;
+	gettimeofday(&tv1, NULL);
 	MPI_Bcast(&signal,1,MPI_INT,0,MPI_COMM_WORLD);
+	gettimeofday(&tv2, NULL);
+	printf("GlobalUpdateParameters,%f,seconds\n",
+		   	(double)(tv2.tv_usec - tv1.tv_usec) / 1000000 +
+			(double)(tv2.tv_sec - tv1.tv_sec));
 
 	// GlobalBroadcastTree();
 
@@ -98,8 +105,19 @@ void RASCATGTRFiniteGammaPhyloProcess::GlobalUpdateParameters()	{
 	}
 
 	// Now send out the doubles and ints over the wire...
+	gettimeofday(&tv1, NULL);
 	MPI_Bcast(ivector,ni,MPI_INT,0,MPI_COMM_WORLD);
+	gettimeofday(&tv2, NULL);
+	printf("GlobalUpdateParameters int,%f,seconds\n",
+      (double)(tv2.tv_usec - tv1.tv_usec) / 1000000 +
+      (double)(tv2.tv_sec - tv1.tv_sec));
+
+	gettimeofday(&tv1, NULL);
 	MPI_Bcast(dvector,nd,MPI_DOUBLE,0,MPI_COMM_WORLD);
+	gettimeofday(&tv2, NULL);
+	printf("GlobalUpdateParameters double,%f,seconds\n",
+      (double)(tv2.tv_usec - tv1.tv_usec) / 1000000 +
+      (double)(tv2.tv_sec - tv1.tv_sec));
 }
 
 

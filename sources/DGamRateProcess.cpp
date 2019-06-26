@@ -160,7 +160,12 @@ void DGamRateProcess::GlobalUpdateRateSuffStat()	{
 	int i,j,nprocs = GetNprocs(),workload = GetNcat();
 	MPI_Status stat;
 	MESSAGE signal = UPDATE_RATE;
+	struct timeval tv1, tv2;
+	gettimeofday(&tv1, NULL);
 	MPI_Bcast(&signal,1,MPI_INT,0,MPI_COMM_WORLD);
+	printf("GlobalUpdateRateSuffStat,%f,seconds\n",
+		   (double)(tv2.tv_usec - tv1.tv_usec) / 1000000 +
+			   (double)(tv2.tv_sec - tv1.tv_sec));
 
 	for(i=0; i<workload; ++i) {
 		ratesuffstatcount[i] = 0;
